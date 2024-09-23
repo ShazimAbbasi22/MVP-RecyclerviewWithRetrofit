@@ -13,8 +13,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -72,6 +74,10 @@ public class MainActivity extends AppCompatActivity implements MainView, PostAda
         // Initialize the Presenter and fetch data.
         presenter = new MainPresenter(this);
         presenter.getDataFromAPI();
+
+        LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("es-ES");
+        // Call this on the main thread as it may require Activity.restart()
+        AppCompatDelegate.setApplicationLocales(appLocale);
     }
 
     @Override
@@ -189,4 +195,6 @@ public class MainActivity extends AppCompatActivity implements MainView, PostAda
     public void onQuantityChanged(List<Post> posts) {
         Toast.makeText(this, posts.toString(), Toast.LENGTH_SHORT).show();
     }
+
+
 }

@@ -2,6 +2,8 @@ package com.example.mvp_retrofitwithrecyclerview.model;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,11 +29,11 @@ public class MainModel {
 
 
     public void getData(Callback<News> callback) {
-        Call<News> call = apiInterface.getNews("us","business", API_KEY);
+        Call<News> call = apiInterface.getNews("tesla", API_KEY);
 
         call.enqueue(new Callback<News>() {
             @Override
-            public void onResponse(Call<News> call, Response<News> response) {
+            public void onResponse(@NonNull Call<News> call, @NonNull Response<News> response) {
                 if (response.isSuccessful()) {
                     callback.onResponse(call, response);
                     Log.d("apiResponse", "Data fetched successfully");

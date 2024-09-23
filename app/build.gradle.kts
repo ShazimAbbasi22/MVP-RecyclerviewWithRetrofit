@@ -62,4 +62,7 @@ dependencies {
 
     implementation("com.github.chthai64:SwipeRevealLayout:1.4.0")
 
+    implementation (libs.appcompat.v160)
+    implementation (libs.appcompat.resources)
+
 }

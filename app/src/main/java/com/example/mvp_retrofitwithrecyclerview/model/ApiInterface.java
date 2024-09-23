@@ -11,10 +11,10 @@ public interface ApiInterface {
 //    @GET("/posts")
 //    Call<List<Post>> getPosts();
 
-    @GET("/v2/top-headlines")
+    @GET("/v2/everything")
     Call<News> getNews(
-            @Query("country") String country,
-            @Query("category") String category,
+//            @Query("country") String country,
+            @Query("q") String q,
             @Query("apiKey") String apiKey
     );
 
